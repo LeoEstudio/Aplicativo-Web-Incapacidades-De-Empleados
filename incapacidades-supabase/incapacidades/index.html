@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registro de incapacidades</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/styles.css"></head><body class="locked">
+<section id="login" class="card"><h1>Registro de incapacidades</h1><p style="color:var(--mut)">Acceso exclusivo de Recursos Humanos.</p>
+<form id="lf"><div><label for="le">Correo</label><input id="le" type="email" required autocomplete="username"></div>
+<div><label for="lp">Contraseña</label><input id="lp" type="password" required autocomplete="current-password"></div>
+<button class="btn" type="submit">Ingresar</button><p id="lmsg" role="status" style="color:var(--er)"></p></form></section>
+<header><h1>Registro de incapacidades</h1>
+<nav role="tablist"><button role="tab" data-v="reg" aria-selected="true">Registrar</button><button role="tab" data-v="lst" aria-selected="false">Registros</button><button role="tab" data-v="res" aria-selected="false">Resumen</button></nav><button class="btn sec" id="out" type="button">Cerrar sesión</button></header>
+<main>
+<section id="reg">
+ <div class="card drop"><h2>Cargar la incapacidad de la EPS</h2>
+  <p>Sube el PDF (o una foto) y el formulario se completa solo. Después revisas y corriges antes de guardar.</p>
+  <input type="file" id="file" accept="application/pdf,image/*" hidden>
+  <button class="btn" id="pick" type="button">Elegir PDF o imagen</button><div id="ocrmsg" aria-live="polite"></div></div>
+ <form class="card" id="f" autocomplete="off">
+  <p class="hint" id="rvhint" hidden>Los campos en amarillo vinieron del documento: confírmalos o corrígelos.</p>
+  <h2>Trabajador</h2><div class="grid" id="g1"></div>
+  <h2 style="margin-top:18px">Atención y evento</h2><div class="grid" id="g2"></div>
+  <h2 style="margin-top:18px">Incapacidad</h2><div class="grid" id="g3"></div>
+  <h2 style="margin-top:18px">Diagnóstico y manejo</h2><div class="grid" id="g4"></div>
+  <div style="margin-top:16px;display:flex;gap:10px"><button class="btn" type="submit" id="save">Guardar incapacidad</button><button class="btn sec" type="button" id="clr">Limpiar</button></div>
+ </form>
+</section>
+<section id="lst" hidden>
+ <div class="card"><div class="grid" id="flt"></div>
+  <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button class="btn sec" id="fclr">Quitar filtros</button><button class="btn" id="exp">Exportar a CSV</button><span id="cnt" style="color:var(--mut)"></span></div></div>
+ <div class="card tw" id="tbl"></div>
+</section>
+<section id="res" hidden><div id="rs"></div></section>
+</main><div id="toast" role="status"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/ocr.js"></script>
+<script src="js/app.js"></script>
+</body></html>
